@@ -38,7 +38,7 @@ class RealTimeInterface:
             self.video_label.imgtk = imgtk
             self.video_label.configure(image=imgtk)
 
-            # Example feedback (you can replace this with your project's logic)
+            # Example feedback (you can customize this)
             self.feedback_label.config(text="Feedback: Great focus!")
 
         # Schedule the next frame update
