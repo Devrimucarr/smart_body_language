@@ -9,8 +9,10 @@ class RealTimeInterface:
         self.root.title("Smart Body Language Analysis")
         self.root.geometry("800x600")  # Window size: 800x600
 
-        # OpenCV kamera başlatma
-        self.cap = cv2.VideoCapture(0)  # Kamerayı başlatıyoruz
+        # Start the OpenCV camera
+        self.cap = cv2.VideoCapture(0)  # Starting the camera
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)  # Set width
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)  # Set height
 
         # Video display label
         self.video_label = Label(self.root)
@@ -45,7 +47,7 @@ class RealTimeInterface:
         self.root.after(10, self.update_frame)
 
     def close_program(self):
-        self.cap.release()  # Kamerayı serbest bırak
+        self.cap.release()  # Release the camera
         self.root.destroy()
 
 # Start the Tkinter interface
