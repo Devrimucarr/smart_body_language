@@ -18,6 +18,10 @@ class RealTimeInterface:
         self.feedback_label = tk.Label(self.root, text="Feedback: None", font=("Arial", 14))
         self.feedback_label.pack()
 
+        # Create an exit button
+        self.exit_button = tk.Button(self.root, text="Exit", command=self.close_application, font=("Arial", 12))
+        self.exit_button.pack(pady=10)
+
         # Start updating frames
         self.update_frame()
 
@@ -36,10 +40,12 @@ class RealTimeInterface:
             self.video_label.imgtk = imgtk
             self.video_label.configure(image=imgtk)
 
-            # Example feedback logic (replace with real logic)
-            focus_level = 80  # Replace this with actual focus detection logic
+            # Example dynamic feedback logic
+            focus_level = self.calculate_focus(frame)  # Replace this with actual logic
             if focus_level > 70:
                 feedback_text = "Great focus!"
+            elif focus_level > 40:
+                feedback_text = "You could improve your focus."
             else:
                 feedback_text = "Please focus more!"
 
@@ -49,9 +55,24 @@ class RealTimeInterface:
         # Schedule the next frame update
         self.root.after(10, self.update_frame)
 
+    def calculate_focus(self, frame):
+        # Placeholder logic for focus calculation
+        # Replace this with your actual focus detection logic
+        return 80  # Example fixed value for demonstration
+
+    def close_application(self):
+        # Release the video capture and close the application
+        if self.cap.isOpened():
+            self.cap.release()
+        self.root.destroy()
+
     def __del__(self):
-        # Release the video capture when the application closes
+        # Ensure the video capture is released when the object is deleted
         if self.cap.isOpened():
             self.cap.release()
 
-# This class is now ready to be used in your main.py file
+# Run the application
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = RealTimeInterface(root)
+    root.mainloop()
