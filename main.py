@@ -1,5 +1,6 @@
 import tkinter as tk
 from interface import RealTimeInterface
+
 from agents.gesture_analyzer import GestureAnalyzer
 from agents.expression_tracker import ExpressionTracker
 from agents.focus_meter import FocusMeter
@@ -16,11 +17,13 @@ def main():
     root = tk.Tk()
     app = RealTimeInterface(root)
 
-    # Optional: Integrate agents with the interface
-    # app.gesture_analyzer = gesture_analyzer
-    # app.expression_tracker = expression_tracker
-    # app.focus_meter = focus_meter
-    # app.feedback_provider = feedback_provider
+    # Bind agents to the interface
+    app.set_agents(
+        gesture_analyzer,
+        expression_tracker,
+        focus_meter,
+        feedback_provider
+    )
 
     # Run the main loop for the interface
     root.mainloop()
