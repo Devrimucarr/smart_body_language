@@ -11,7 +11,6 @@ class RealTimeInterface:
 
         self.cap = cv2.VideoCapture(0)
  
-      
         # Video display label
         self.video_label = Label(self.root)
         self.video_label.grid(row=0, column=1, pady=20, padx=20)
