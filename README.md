@@ -39,3 +39,9 @@ Pillow
 
 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+
+## Blog Post
+Learn more about this project in my detailed blog post:  
+
+[Read the Blog on Medium](https://medium.com/@ucardevrim1_49931/event-driven-programming-building-a-real-time-smart-body-language-analysis-system-527a65a13eca)
