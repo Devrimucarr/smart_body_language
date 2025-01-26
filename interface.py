@@ -7,21 +7,19 @@ class RealTimeInterface:
     def __init__(self, root):
         self.root = root
         self.root.title("Smart Body Language Analysis")
-
-        # Initialize OpenCV video capture
-        self.cap = cv2.VideoCapture(0)
+        self.root.geometry("800x600")  # Window size: 800x600
 
         # Video display label
         self.video_label = Label(self.root)
-        self.video_label.pack()
+        self.video_label.grid(row=0, column=1, pady=20, padx=20)
 
         # Feedback display label
         self.feedback_label = Label(self.root, text="Feedback: Initializing...", font=("Arial", 16), fg="green")
-        self.feedback_label.pack()
+        self.feedback_label.grid(row=0, column=0, pady=20, padx=20)
 
         # Exit button
         self.exit_button = tk.Button(self.root, text="Exit", command=self.close_program)
-        self.exit_button.pack()
+        self.exit_button.grid(row=1, column=0, pady=20, padx=20)
 
         # Update video feed
         self.update_frame()
